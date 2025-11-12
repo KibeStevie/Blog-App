@@ -1,28 +1,31 @@
-# Stage 1: Build the WAR file
-FROM maven:3.9.6-eclipse-temurin-17 AS builder
+# Use official Maven image for building
+FROM maven:3.9.4-eclipse-temurin-22 AS build
+
+# Set work directory
 WORKDIR /app
 
-# Copy pom.xml and download dependencies first (for faster caching)
+# Copy only the pom.xml first to cache dependencies
 COPY pom.xml .
-RUN mvn dependency:go-offline
+
+# Download dependencies (avoids RC1 issues and speeds up rebuilds)
+RUN mvn dependency:resolve
 
 # Copy the rest of the source code
 COPY src ./src
 
-# Build the WAR file
+# Build the WAR file (skip tests for faster build)
 RUN mvn clean package -DskipTests
 
-# Stage 2: Run the WAR with Tomcat
-FROM tomcat:10.1-jdk17
-WORKDIR /usr/local/tomcat
+# Use Tomcat 10 (supports Jakarta EE 10 / JSP 3.0)
+FROM tomcat:10.1.30-jdk22
 
-# Remove the default ROOT app
-RUN rm -rf webapps/ROOT
+# Remove default ROOT webapp
+RUN rm -rf /usr/local/tomcat/webapps/*
 
-# Copy your WAR from the builder stage to Tomcat
-COPY --from=builder /app/target/*.war webapps/ROOT.war
+# Copy the WAR built from previous stage as ROOT.war
+COPY --from=build /app/target/blogapp.war /usr/local/tomcat/webapps/ROOT.war
 
-# Expose port 8080 for Render
+# Expose default Tomcat port
 EXPOSE 8080
 
 # Start Tomcat
