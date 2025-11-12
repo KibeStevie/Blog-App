@@ -1,0 +1,8 @@
+#ignore report binaries
+
+/target/
+.mvn
+.vscode
+
+.env
+*.log

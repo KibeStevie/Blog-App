@@ -37,6 +37,14 @@
       <scope>provided</scope>
     </dependency>
 
+    <!-- Dotenv for environment variable management -->
+    <dependency>
+      <groupId>io.github.cdimascio</groupId>
+      <artifactId>dotenv-java</artifactId>
+      <version>3.0.0</version>
+    </dependency>
+
+
     <!-- JSTL for JSP (optional but useful) -->
     <dependency>
       <groupId>jakarta.servlet.jsp.jstl</groupId>

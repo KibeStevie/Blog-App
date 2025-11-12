@@ -11,14 +11,16 @@ import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
 import jakarta.servlet.annotation.WebListener;
+import io.github.cdimascio.dotenv.Dotenv;
 
 @WebListener
 public class DBInitListener implements ServletContextListener {
+    private static final Dotenv dotenv = Dotenv.load();
 
     // Change these values based on your setup
-    private static final String JDBC_URL = "jdbc:postgresql://localhost:5432/blog_db";
-    private static final String USER = "postgres";
-    private static final String PASS = "skibs8155";
+    private static final String JDBC_URL = dotenv.get("JDBC_URL");
+    private static final String USER = dotenv.get("DB_USER");
+    private static final String PASS = dotenv.get("DB_PASS");
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
