@@ -1,8 +1,0 @@
-/home/kibestevie/Blog-Maven/blogapp/src/main/java/com/blogapp/model/Post.java
-/home/kibestevie/Blog-Maven/blogapp/src/main/java/com/blogapp/servlet/PostCreateServlet.java
-/home/kibestevie/Blog-Maven/blogapp/src/main/java/com/blogapp/servlet/PostEditServlet.java
-/home/kibestevie/Blog-Maven/blogapp/src/main/java/com/blogapp/servlet/PostListServlet.java
-/home/kibestevie/Blog-Maven/blogapp/src/main/java/com/blogapp/servlet/PostViewServlet.java
-/home/kibestevie/Blog-Maven/blogapp/src/main/java/com/blogapp/listener/DBInitListener.java
-/home/kibestevie/Blog-Maven/blogapp/src/main/java/com/blogapp/dao/PostDAO.java
-/home/kibestevie/Blog-Maven/blogapp/src/main/java/com/blogapp/servlet/PostDeleteServlet.java

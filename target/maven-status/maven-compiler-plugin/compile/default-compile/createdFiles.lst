@@ -1,8 +1,0 @@
-com/blogapp/servlet/PostCreateServlet.class
-com/blogapp/servlet/PostListServlet.class
-com/blogapp/model/Post.class
-com/blogapp/listener/DBInitListener.class
-com/blogapp/servlet/PostDeleteServlet.class
-com/blogapp/servlet/PostViewServlet.class
-com/blogapp/servlet/PostEditServlet.class
-com/blogapp/dao/PostDAO.class
