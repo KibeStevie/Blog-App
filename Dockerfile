@@ -17,7 +17,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # Use Tomcat 10 (supports Jakarta EE 10 / JSP 3.0)
-FROM tomcat:10.1.30-jdk22
+FROM 10.1.49-jdk21-temurin-noble
 
 # Remove default ROOT webapp
 RUN rm -rf /usr/local/tomcat/webapps/*
