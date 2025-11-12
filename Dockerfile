@@ -1,5 +1,5 @@
 # Use official Maven image for building
-FROM maven:3.9.4-eclipse-temurin-22 AS build
+FROM maven:3.9.11-eclipse-temurin-11-alpine AS build
 
 # Set work directory
 WORKDIR /app
@@ -17,7 +17,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # Use Tomcat 10 (supports Jakarta EE 10 / JSP 3.0)
-FROM 10.1.49-jdk21-temurin-noble
+FROM tomcat:10.1.49-jdk21-temurin-noble
 
 # Remove default ROOT webapp
 RUN rm -rf /usr/local/tomcat/webapps/*
